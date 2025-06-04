@@ -52,7 +52,7 @@ section.addEventListener('click',(e)=>{
         if(checkedLength.length>0 && barWidth>333) {
                 bar.firstElementChild.style.color = '#fbfbfb'
         } else {
-            bar.firstElementChild.style.color = ''
+            bar.firstElementChild.style.color = 'black'
         }
 
     }
