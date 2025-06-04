@@ -25,6 +25,7 @@ h1 {
 h2 {
     font-family: poppins-bold;
     font-size: 32px;
+    padding-top: 34px;
     margin-left: 40px;
 }
 
@@ -47,23 +48,19 @@ h2 {
     display: none;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-}
 
 form {
     background-color: #fbfbfb;
-    width: 660px;
-    height: 810px;
+    max-width: 660px;
     border-radius: 15px;
+    margin-inline: auto;
 }
 
 .sun {
-    position: absolute;
     margin-left: 16px;
     height: 50px;
     width: 50px;
+    vertical-align: middle;
 }
 
 .bar {
@@ -72,6 +69,7 @@ form {
     border-radius: 15px;
     margin-left: 40px;
     margin-right: 40px;
+    margin-bottom: 33px;
 }
 
 .bar span {
@@ -109,10 +107,13 @@ input[type="text"]::-webkit-input-placeholder {
   word-spacing: normal !important;
 }
 
+section {
+    margin-left: 40px;
+}
 
 .input {
     height: 82px;
-    margin: 16px 40px 0px 40px;
+    margin: 16px 40px 0px 0px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 17px;
     display: flex;
@@ -180,8 +181,35 @@ footer {
     margin-top: 64px;
     color: #858585;
     font-size: 11px;
+    padding-bottom: 34px;
 }
 
 .bottom-spacing {
     height: 20px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    .sun {
+        height: 28px;
+        width: 28px;
+        vertical-align: middle;
+        margin-left: 6px;
+    }
+
+    h1, .first-p, .bar, .second-p, section {
+        margin-left: 20px;
+    }
+
+}
+
+@media (max-width: 450px) {
+    .first-p {
+        font-size: 12px;
+    }
 }
