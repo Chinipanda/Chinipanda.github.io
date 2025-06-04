@@ -42,7 +42,7 @@ h2 {
 
 .second-p {
     margin-left: 40px;
-    margin-top: 20px;
+    margin-top: -10px;
     margin-bottom: 20px;
     color: #FF5151;
     display: none;
@@ -109,11 +109,12 @@ input[type="text"]::-webkit-input-placeholder {
 
 section {
     margin-left: 40px;
+    margin-right: 40px;
 }
 
 .input {
     height: 82px;
-    margin: 16px 40px 0px 0px;
+    margin-top: 16px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 17px;
     display: flex;
@@ -188,9 +189,9 @@ footer {
     height: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 692px) {
     h1 {
-        font-size: 32px;
+        font-size: 42px;
     }
     h2 {
         font-size: 24px;
@@ -202,14 +203,47 @@ footer {
         margin-left: 6px;
     }
 
-    h1, .first-p, .bar, .second-p, section {
-        margin-left: 20px;
-    }
+}
 
+@media (max-width: 520px) {
+    h1 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 344px) {
+    h1 {
+        font-size: 24px;
+    }
+    .first-p {
+        font-size: 11px !important;
+        margin-top: 20px;
+    }
 }
 
 @media (max-width: 450px) {
-    .first-p {
-        font-size: 12px;
+    h2, .first-p, .bar, .second-p, section {
+        margin-left: 20px;
+        margin-right: 10px;
     }
+    .first-p, .second-p {
+        font-size: 14px;
+    }
+    .input {
+        margin-top: 0px;
+        height: 70px;
+    }
+    .null::before, .not-null::before {
+        width: 15px;
+        height: 15px;
+    }
+    .checked {
+        width: 19px;
+        height: 19px;
+    }
+    input[type="text"], input[type="text"]::-webkit-input-placeholder {
+        font-size: 15px;
+        margin-left: 52px;
+    }
+
 }
