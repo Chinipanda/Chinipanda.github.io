@@ -4,6 +4,7 @@ const secondPara = document.querySelector('.second-p')
 const inputSpan = document.querySelectorAll('.input span')
 const input = document.querySelectorAll('input[type="text"]')
 const checkBox = document.querySelectorAll('input[type=checkbox]')
+const barElement = document.querySelector('.bar')
 const bar = document.querySelector('.bar span')
 
 const inputSpanList = [...inputSpan]
@@ -45,10 +46,11 @@ section.addEventListener('click',(e)=>{
         }
         
         const checkedLength = document.querySelectorAll('.checked')
-        bar.style.width = `${193*checkedLength.length}px`
+        const barWidth = barElement.offsetWidth
+        bar.style.width = `${Math.ceil(barWidth/3*checkedLength.length)}px`
         bar.firstElementChild.innerText = `${checkedLength.length}/3 Completed`
-        if(checkedLength.length>0) {
-            bar.firstElementChild.style.color = '#fbfbfb'
+        if(checkedLength.length>0 && barWidth>333) {
+                bar.firstElementChild.style.color = '#fbfbfb'
         } else {
             bar.firstElementChild.style.color = ''
         }
