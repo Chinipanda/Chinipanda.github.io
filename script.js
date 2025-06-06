@@ -24,6 +24,12 @@ section.addEventListener('click',(e)=>{
                 localStorage.setItem('inputData', JSON.stringify(inputData))
             } else {
                 e.target.previousElementSibling.className = 'null'
+                for (inputStyle of input) {
+                    inputStyle.removeAttribute('style')
+                }
+                bar.style.width = '0px'
+                bar.firstElementChild.innerText = '0/3 Completed'
+                bar.firstElementChild.style.color = 'black'
                 delete inputData[e.target.name]
                 localStorage.setItem('inputData',JSON.stringify(inputData))
                 for(inputSpanElement of inputSpanList) {
@@ -91,8 +97,8 @@ if (inputData) {
 
 if (checkedBoxes) {
     for (checkElement of checkBoxList) {
-        for (checkBoxName in checkedBoxes) {
-            if (checkElement.name==checkBoxName) {
+        for (boxName in checkedBoxes) {
+            if (checkElement.name==boxName) {
                 checkElement.click()
             }
         }
