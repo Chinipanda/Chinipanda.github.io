@@ -11,13 +11,21 @@ const inputSpanList = [...inputSpan]
 const checkBoxList = [...checkBox]
 const inputList = [...input]
 
+let inputData = JSON.parse(localStorage.getItem('inputData')) || {}
+let checkedBoxes = JSON.parse(localStorage.getItem('checkedBoxes')) || {}
+
 section.addEventListener('click',(e)=>{
     if (inputList.includes(e.target)) {
         e.target.addEventListener('input',(e)=>{
             if (e.target.value != "") {
                 e.target.previousElementSibling.className = 'not-null'
+                const inputName = e.target.name
+                inputData[inputName] = `${e.target.value}`
+                localStorage.setItem('inputData', JSON.stringify(inputData))
             } else {
                 e.target.previousElementSibling.className = 'null'
+                delete inputData[e.target.name]
+                localStorage.setItem('inputData',JSON.stringify(inputData))
                 for(inputSpanElement of inputSpanList) {
                     inputSpanElement.className = 'unchecked'
                 }
@@ -28,18 +36,23 @@ section.addEventListener('click',(e)=>{
         })
     } else if(checkBoxList.includes(e.target)) {
         const inputNode = document.querySelectorAll('.not-null')
-        ready = inputNode.length
+        const ready = inputNode.length
         if (ready == 3) {
             if(e.target.checked) {
                 e.target.previousElementSibling.className = 'checked'
                 e.target.style.border = 'hidden'
                 e.target.nextElementSibling.style.color = '#48a300'
                 e.target.nextElementSibling.style.textDecoration = 'line-through'
+                    checkedBoxes[e.target.name] = 'checked'
+                    localStorage.setItem('checkedBoxes', JSON.stringify(checkedBoxes))
+                
             } else {
                 e.target.previousElementSibling.className = 'unchecked'
                 e.target.style.border = '2px solid rgba(97, 72, 28, 1)'
                 e.target.nextElementSibling.style.color = ''
                 e.target.nextElementSibling.style.textDecoration = ''
+                delete checkedBoxes[e.target.name]
+                localStorage.setItem('checkedBoxes', JSON.stringify(checkedBoxes))
             }
         } else {
             secondPara.style.display = 'block'
@@ -63,3 +76,25 @@ body.addEventListener('click', (e)=> {
         secondPara.style.display = 'none'
     }
 })
+
+
+if (inputData) {
+    for (inputElement of inputList) {
+        for (inputObject in inputData) {
+            if (inputElement.name==inputObject) {
+                inputElement.value = inputData[inputObject]
+                inputElement.previousElementSibling.className = 'not-null'
+            }
+        }
+    }
+}
+
+if (checkedBoxes) {
+    for (checkElement of checkBoxList) {
+        for (checkBoxName in checkedBoxes) {
+            if (checkElement.name==checkBoxName) {
+                checkElement.click()
+            }
+        }
+    }
+}
